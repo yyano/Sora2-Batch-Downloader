@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Sora2 Batch Downloader(exporter)",
+  "version": "0.4.1",
+  "description": "Download(Export) Sora 2 videos from sora.chatgpt.com.",
+  "permissions": [
+    "downloads",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "https://sora.chatgpt.com/*",
+    "https://videos.openai.com/*"
+  ],
+  "action": {
+    "default_title": "Sora2 Downloader"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://sora.chatgpt.com/*"],
+      "js": [
+        "content/core/utils.js",
+        "content/core/storage.js",
+        "content/core/net.js",
+        "content/core/ui.js",
+        "content/core/extract.js",
+        "content/core/downloader.js",
+        "content/routes/profile.js",
+        "content/routes/drafts.js",
+        "content.js"
+      ],
+      "css": ["content.css"],
+      "run_at": "document_start"
+    }
+  ]
+}

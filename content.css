@@ -1,0 +1,82 @@
+#sora2dl-panel {
+  position: fixed;
+  bottom: 96px;
+  left: 16px;
+  z-index: 99999;
+  width: 260px;
+  font-family: "IBM Plex Sans", "Noto Sans JP", sans-serif;
+  color: #111;
+  background: #f6f3ef;
+  border: 1px solid #d8d1c8;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+#sora2dl-panel .sora2dl-title {
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+#sora2dl-panel .sora2dl-status {
+  font-size: 12px;
+  color: #5a4b3f;
+  margin-bottom: 8px;
+}
+
+#sora2dl-panel .sora2dl-actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+#sora2dl-panel .sora2dl-btn {
+  flex: 1;
+  font-size: 12px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  border: 1px solid #c7b9ac;
+  background: #fff;
+  cursor: pointer;
+}
+
+#sora2dl-panel .sora2dl-btn:hover {
+  background: #f0ebe6;
+}
+
+#sora2dl-panel .sora2dl-primary {
+  background: #2c1f18;
+  color: #fff;
+  border-color: #2c1f18;
+}
+
+#sora2dl-panel .sora2dl-primary:hover {
+  background: #1f1510;
+}
+
+#sora2dl-panel .sora2dl-list {
+  border-top: 1px dashed #d8d1c8;
+  padding-top: 8px;
+  font-size: 11px;
+  color: #3d342c;
+  max-height: 120px;
+  overflow: auto;
+}
+
+#sora2dl-panel .sora2dl-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+#sora2dl-panel .sora2dl-more {
+  margin-top: 4px;
+  color: #7b6b5f;
+}
+
+#sora2dl-panel .sora2dl-hint {
+  margin-top: 8px;
+  font-size: 10px;
+  color: #7b6b5f;
+}
