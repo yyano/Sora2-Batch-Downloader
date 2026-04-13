@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Sora2 Batch Downloader(exporter)",
-  "version": "0.4.1",
+  "version": "0.4.3",
   "description": "Download(Export) Sora 2 videos from sora.chatgpt.com.",
   "permissions": [
     "downloads",

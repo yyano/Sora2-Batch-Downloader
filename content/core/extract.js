@@ -12,7 +12,8 @@
     pickText,
     toIsoString,
     getPostIdFromUrl,
-    getGenIdFromUrl
+    getGenIdFromUrl,
+    getPostLike
   } = Sora2dl.core.utils;
   const { fetchPostJson } = Sora2dl.core.net;
 
@@ -162,7 +163,7 @@
     }
 
     const best = pickBestVideoUrl(scope);
-    const url =
+    let url =
       best.url ||
       findCurrentVideoUrl(scope) ||
       findCurrentVideoUrl(document) ||
@@ -185,6 +186,8 @@
     const kind = postId ? 'post' : genId ? 'draft' : '';
     const id = postId || genId;
     const postJsonResult = await fetchPostJson(id, kind);
+    const jsonUrl = pickDownloadUrlFromPostJson(postJsonResult?.data);
+    if (jsonUrl) url = jsonUrl;
 
     return {
       url,
@@ -197,6 +200,16 @@
       postJson: postJsonResult?.data || null,
       postJsonRateLimited: Boolean(postJsonResult?.rateLimited)
     };
+  }
+
+  function pickDownloadUrlFromPostJson(postJson) {
+    const post = getPostLike(postJson);
+    const attachments = Array.isArray(post?.attachments) ? post.attachments : [];
+    for (const att of attachments) {
+      const raw = att?.downloadable_url || att?.download_urls?.watermark;
+      if (raw) return normalizeUrl(raw) || raw;
+    }
+    return '';
   }
 
   async function openItemAndExtract(el) {

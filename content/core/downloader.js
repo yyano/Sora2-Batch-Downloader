@@ -4,7 +4,7 @@
 
   const { buildAutoFilename, getPostLike } = Sora2dl.core.utils;
   const { getDownloadedCache, addDownloadedKey } = Sora2dl.core.storage;
-  const { extractFromOpenView } = Sora2dl.core.extract;
+  const { extractFromOpenView, waitForNextVideoUrl } = Sora2dl.core.extract;
   const { updateStatus } = Sora2dl.core.ui;
 
   let autoDownRunning = false;
@@ -165,7 +165,14 @@
       return false;
     }
 
-    const info = await extractFromOpenView();
+    let info = await extractFromOpenView();
+    if (autoDownLastUrl && info.url && info.url === autoDownLastUrl) {
+      const nextUrl = await waitForNextVideoUrl(autoDownLastUrl, 2500);
+      if (nextUrl) {
+        await Sora2dl.core.utils.sleep(150);
+        info = await extractFromOpenView();
+      }
+    }
     if (!info.url) {
       if (info.reason === 'blob') {
         updateStatus('blob形式のため直接DLできません。動画を再生してから再試行してください。');
