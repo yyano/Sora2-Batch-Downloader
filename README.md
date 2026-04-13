@@ -2,6 +2,10 @@
 
 Sora（`sora.chatgpt.com`）の動画をまとめてダウンロード（エクスポート）するChrome拡張です。
 
+- [2026/04/14] Sora2公式にてエクスポート機能が公開されました。動作も速くまとめてzip化されているため高速にダウンロード（エクスポート）できます。
+[How can I access and export content I created in Sora?
+](https://help.openai.com/ja-jp/articles/20001152-what-to-know-about-the-sora-discontinuation#how-can-i-access-and-export-content-i-created-in-sora)
+
 ## 主な機能
 - `/profile` と `/drafts` の一覧ページでワンクリック有効化
 - 動画(詳細)ページ（`/p/s_...` / `/d/gen_...`）に入ると自動で連続DL
